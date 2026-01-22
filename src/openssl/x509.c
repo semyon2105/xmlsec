@@ -1170,7 +1170,7 @@ xmlSecOpenSSLX509NameWrite(X509_NAME* nm) {
         goto done;
     }
 
-    if (X509_NAME_print_ex(mem, nm, 0, XN_FLAG_RFC2253) <=0) {
+    if (X509_NAME_print_ex(mem, nm, 0, XN_FLAG_RFC2253 & ~ASN1_STRFLGS_ESC_MSB) <=0) {
         xmlSecOpenSSLError("X509_NAME_print_ex", NULL);
         goto done;
     }
